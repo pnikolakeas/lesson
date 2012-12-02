@@ -1,0 +1,11 @@
+.pom~
+.classpath
+.buildpath
+.project
+.settings*
+.settings/
+target*
+target/
+.metadata*
+.metadata/
+derby.log

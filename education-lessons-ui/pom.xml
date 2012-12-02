@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>lessons</groupId>
+		<artifactId>lessons</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>education-lessons-ui</artifactId>
+	<packaging>war</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-servlet</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.extjs</groupId>
+			<artifactId>gxt</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>org.springframework.web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>org.springframework.web.servlet</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp.jstl</groupId>
+			<artifactId>jstl-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jstl-impl</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-servlet</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openid4java</groupId>
+			<artifactId>openid4java-consumer</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>lessons</groupId>
+			<artifactId>education-lessons-viewmodel</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>lessons</groupId>
+			<artifactId>education-lessons-dao</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+
+				<!-- Configuration for GWT development mode. -->
+				<!-- Does not automatically participate in the default build life-cycle. -->
+				<!-- You have to fire it, explicitly: e.g. mvn clean compile war:exploded antrun:run -->
+				<configuration>
+					<tasks>
+						<property name="classpath" refid="maven.compile.classpath" />
+						<property name="src.dir" value="${project.build.sourceDirectory}" />
+						<property name="war.dir" value="${project.build.directory}/${project.build.finalName}" />
+						<property name="gwt.url" value="http://localhost:8080/education-lessons-ui/LessonsUI.jsp" />
+						<property name="gwt.module" value="com.education.lessons.ui.LessonsUI" />
+						<ant target="gwt.debug" />
+					</tasks>
+				</configuration>
+
+				<executions>
+
+					<!-- Configuration for GWT compile mode. -->
+					<execution>
+						<id>gwt.compile</id>
+						<phase>prepare-package</phase>
+						<configuration>
+							<tasks>
+								<property name="classpath" refid="maven.compile.classpath" />
+								<property name="src.dir" value="${project.build.sourceDirectory}" />
+								<property name="war.dir" value="${project.build.directory}/${project.build.finalName}" />
+								<property name="gwt.module" value="com.education.lessons.ui.LessonsUI" />
+								<ant target="gwt.compile" />
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+
+					<!-- Extract JSP pages from JAR files. -->
+					<execution>
+						<id>jsp.extract</id>
+						<phase>package</phase>
+						<configuration>
+							<tasks>
+								<ant target="jsp.extract" />
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+
+				</executions>
+			</plugin>
+		</plugins>
+
+	</build>
+
+</project>

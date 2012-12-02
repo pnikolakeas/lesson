@@ -1,0 +1,78 @@
+.WebDialog .dialogTopCenter {
+	font-weight: bold;
+}
+
+.WebDialog .dialogTopCenter .Caption {
+	white-space: nowrap;
+	padding-right: 32px;
+}
+
+.WebDialog .dialogTopCenter .closeButton {
+	background: url(icons/circular/no.png) no-repeat;
+	padding: 0;
+	border: 0;
+}
+
+.WebDialog .dialogMiddleCenter {
+	padding: 0;
+}
+
+.WebDialog .dialogContent {
+	padding: 12px;
+}
+
+
+
+.OpenIDPanel .centerPanel .gwt-Label {
+	margin-bottom: 2px;
+}
+
+.OpenIDPanel .buttonsPanel button {
+	margin-right: 10px;
+	border: 1px solid #bbb;
+	width: 100px;
+	height: 50px;
+	background-color: #fff;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.OpenIDPanel .buttonsPanel .googleButton {
+	background-image: url(images/login/google.gif);
+}
+
+.OpenIDPanel .buttonsPanel .yahooButton {
+	background-image: url(images/login/yahoo.gif);
+}
+
+.OpenIDPanel .buttonsPanel .openidButton {
+	background-image: url(images/login/openid.gif);
+}
+
+.OpenIDPanel .formPanel {
+	margin-top: 24px;
+}
+
+.OpenIDPanel .formPanel input {
+	margin-right: 5px;
+	border-radius: 4px;
+	border: 1px solid #bbb;
+	padding: 5px 5px 5px 32px;
+	height: 22px;
+	font-size: 16px;
+	background-image: url(images/login/openid.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+.OpenIDPanel .formPanel button {
+	height: 34px;
+	font-size: 16px;
+}
+
+.OpenIDPanel .eastPanel {
+	padding: 12px;
+	margin-left: 24px;
+	border-radius: 10px;
+	background-color: #efefef;
+}

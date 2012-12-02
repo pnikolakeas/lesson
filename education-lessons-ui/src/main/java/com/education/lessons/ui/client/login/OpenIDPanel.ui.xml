@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<g:DockPanel styleName="OpenIDPanel content">
+		<g:Dock direction="CENTER">
+
+			<g:FlowPanel styleName="centerPanel">
+				<g:Label text="Click your account provider" />
+				<g:FlowPanel styleName="buttonsPanel">
+					<g:Button ui:field="googleButton" title="Google" />
+					<g:Button ui:field="yahooButton" title="Yahoo" />
+					<g:Button ui:field="openidButton" title="OpenID" />
+				</g:FlowPanel>
+				<g:FlowPanel ui:field="formPanel" styleName="formPanel">
+					<g:Label text="Enter your OpenID" />
+					<g:TextBox ui:field="urlField" />
+					<g:Button ui:field="submitButton" text="Login" />
+				</g:FlowPanel>
+			</g:FlowPanel>
+
+		</g:Dock>
+		<g:Dock direction="EAST" width="300px">
+
+			<g:FlowPanel ui:field="eastPanel" styleName="eastPanel">
+				<g:HTMLPanel>
+					<h3>What is OpenID?</h3>
+					<p style='text-align: justify'>OpenID is a technology that allows you to connect to many websites, with a single identity.</p>
+					<p style='text-align: justify'>It is an open standard, supported by well known providers and thousands of websites.</p>
+					<a href='http://openid.net/get-an-openid/individuals/' target='_blank'>Learn more ...</a>
+				</g:HTMLPanel>
+			</g:FlowPanel>
+
+		</g:Dock>
+	</g:DockPanel>
+
+</ui:UiBinder>

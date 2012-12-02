@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="build">
+
+	<path id="gwt.classpath">
+		<path path="${classpath}" />
+		<pathelement location="${src.dir}" />
+	</path>
+
+	<target name="cache.properties">
+		<!-- <echo message="${classpath}" /> -->
+		<echo file="build.properties" message="src.dir = ${src.dir}${line.separator}" />
+		<echo file="build.properties" message="war.dir = ${war.dir}${line.separator}" append="true" />
+	</target>
+	
+	<target name="gwt.compile" depends="cache.properties">
+		<mkdir dir="${war.dir}" />
+		<java classname="com.google.gwt.dev.Compiler" fork="true">
+			<classpath refid="gwt.classpath" />
+			<arg line="-war ${war.dir} ${gwt.module}" />
+		</java>
+	</target>
+
+	<target name="gwt.debug" depends="cache.properties">
+		<java classname="com.google.gwt.dev.DevMode" fork="true">
+			<classpath refid="gwt.classpath" />
+			<!-- http://java.sun.com/javase/technologies/core/toolsapis/jpda/ -->
+			<jvmarg value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=localhost:8000" />
+			<arg line="-war ${war.dir} -noserver -startupUrl ${gwt.url} ${gwt.module}" />
+		</java>
+	</target>
+
+	<target name="jsp.extract">
+		<property file="build.properties" />
+
+		<!-- extract from source folder -->
+		<copy todir="${war.dir}/WEB-INF/jsp">
+			<fileset dir="src/main/java">
+				<include name="**/*.jsp" />
+			</fileset>
+		</copy>
+
+		<!-- extract from webapp folder -->
+		<copy todir="${war.dir}/WEB-INF/jsp">
+			<fileset dir="src/main/webapp/WEB-INF/jsp">
+				<include name="**/*.jsp" />
+			</fileset>
+		</copy>
+	</target>
+
+</project>
